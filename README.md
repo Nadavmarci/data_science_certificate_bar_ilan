@@ -2,20 +2,50 @@
 ## Product Demand Prediction for Inventory Management in an Indian Restaurant
 
 ### Overview
-This project analyzes online order data from a Indian restaurant in order to classify which product combinations (frequent baskets of items) are most common.  
-Using **Apriori algorithms for frequent itemset mining**, feature engineering, and machine learning, the system predicts which products are likely to be ordered during the next three days.  
-The objective is to support **inventory management decisions** by anticipating short-term demand patterns.
+This project analyzes online order data from a single Indian restaurant in order to identify which product combinations (frequent baskets of items) are most common and to predict ordering patterns for the following three days.  
+Using **Apriori algorithms for frequent itemset mining**, feature engineering, and machine learning models (Logistic Regression, Random Forest, Gradient Boosting, AdaBoost), the goal is to support **inventory management decisions** by anticipating short-term demand.
 
-### Main Components
-- Data collection from multiple sources and interfaces  
-- Creation of a unified flat table using SQL  
-- Exploratory Data Analysis (EDA): examining distributions and correlations between variables, removing irrelevant or duplicate records, handling missing values and outliers, and performing statistical tests in R to validate relationships and significance between features
-- Feature engineering to derive meaningful predictors  
-- Model development and comparison: Logistic Regression, Random Forest, Gradient Boosting, and AdaBoost  
-- Hyperparameter tuning and model calibration  
-- Evaluation of model performance on test data  
-- Outline for practical deployment and operational use
+---
 
+### Data
+- Online orders: product-level transactions collected from the restaurant’s ordering system  
+- Product prices: used to evaluate basket composition and revenue impact  
+- Calendar data: weekdays, months, holidays  
+- Weather data: daily min/avg/max temperatures for contextual features  
 
-### Project Report
-The full PDF report is included under `report/`:
+**Model inputs:**  
+- Cleaned and merged flat table including order features, weather, and calendar variables  
+- Engineered features such as lags, ratios, and dummy variables  
+
+---
+
+### Method
+- Built a unified **flat table** with SQL to merge and organize inputs  
+- **Exploratory Data Analysis (EDA):** examined distributions and correlations, handled missing values/outliers, removed irrelevant or duplicate records, and used R to test correlations and significance across features  
+- **Feature engineering** to derive meaningful predictors  
+- Model development and comparison: Logistic Regression, Random Forest, Gradient Boosting, AdaBoost  
+- **Hyperparameter tuning** via Grid Search  
+- Evaluation with AUC, Accuracy, Precision, Recall  
+
+---
+
+### Results
+- **Best performing model:** AdaBoost  
+- **Test performance:** AUC ≈ 0.80, balanced performance across metrics  
+- Frequent product combinations successfully identified using Apriori, supporting classification features  
+- EDA revealed strong correlations between weather, calendar effects, and ordering behavior  
+- Qualitative examples and detailed tables are provided in the PDF report  
+
+---
+
+### Colab Notebooks
+
+- EDA  
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1fvY5YNuII9T_nDxHjLGI6E5fYGfH1_q6?usp=drive_link)
+
+- Machine Learning / Modeling  
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Jn4RslbPRjwbHYOh8lDNys5ooPSCYYBu?usp=drive_link)
+
+---
+
+### Repository Structure
